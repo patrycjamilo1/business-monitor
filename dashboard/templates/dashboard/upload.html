@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Prześlij plik - Business Monitor{% endblock %}
+
+{% block content %}
+<h2 class="text-success">📤 Prześlij plik CSV</h2>
+
+<form method="post" enctype="multipart/form-data" class="mt-3">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.file.label_tag }}
+        {{ form.file }}
+    </div>
+    <button type="submit" class="btn btn-primary">Prześlij</button>
+</form>
+{% endblock %}
