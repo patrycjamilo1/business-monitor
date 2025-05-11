@@ -2,7 +2,7 @@ name: Notify Discord on Deploy
 
 on:
   workflow_run:
-    workflows: ["Deploy to Cloud Run"]
+    workflows: ["Manual Deploy to Cloud Run", "Auto Deploy on Push to Master"]
     types:
       - completed
 
