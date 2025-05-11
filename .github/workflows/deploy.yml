@@ -1,7 +1,7 @@
 name: Manual Deploy to Cloud Run
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # umożliwia ręczne odpalenie workflow z GitHuba
 
 jobs:
   deploy:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Authenticate to Google Cloud
@@ -17,7 +17,7 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Setup gcloud CLI
+      - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
