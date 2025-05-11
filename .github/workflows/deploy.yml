@@ -1,7 +1,7 @@
 name: Manual Deploy to Cloud Run
 
 on:
-  workflow_dispatch:  # umożliwia ręczne odpalenie workflow z GitHuba
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -15,16 +15,13 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
+          token_format: access_token
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          
-      - name: Debug service account
-        run: |
-          echo "${{ secrets.GCP_SA_KEY }}" | jq .
 
       - name: Build Docker image
         run: |
