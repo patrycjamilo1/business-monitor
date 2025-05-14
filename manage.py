@@ -20,10 +20,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-    import os,sys
-
-    def sampleFunc():
-      a=1+2
-      print( "Value:",a )
-
